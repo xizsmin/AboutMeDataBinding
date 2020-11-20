@@ -33,7 +33,15 @@ class MainActivity : AppCompatActivity() {
     private fun editNickname(view: View) = with(binding) {
         invalidateAll()
         nicknameText.visibility = View.GONE
-        nicknameEdit.visibility = View.VISIBLE
+        //nicknameEdit.visibility = View.VISIBLE
+        //nicknameEdit.requestFocus()
+        with(nicknameEdit) {
+            visibility = View.VISIBLE
+            requestFocus()
+            val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, InputMethodManager.HIDE_IMPLICIT_ONLY)
+        }
+
         doneButton.visibility = View.VISIBLE
     }
 
